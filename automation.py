@@ -10,7 +10,7 @@ for product_row in range(2, product_list.max_row + 1):
     suplier_names = product_list.cell(product_row, 4).value
     
     if suplier_names in product_per_suplier:
-        current_num_product = product_per_suplier[suplier_names]
+        current_num_product = product_per_suplier.get(suplier_names)
         product_per_suplier[suplier_names] = current_num_product + 1
     else:
         product_per_suplier[suplier_names] = 1
