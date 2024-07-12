@@ -12,7 +12,8 @@ for product_row in range(2, product_list.max_row + 1):
     suplier_names = product_list.cell(product_row, 4).value
     inventory = product_list.cell(product_row, 2).value
     price = product_list.cell(product_row, 3).value
-    producu_muber = product_list.cell(product_row, 1).value
+    producut_muber = product_list.cell(product_row, 1).value
+    total_inv_price = product_list.cell(product_row, 5)
 
     # print(f"{product_row}. {suplier_names} has {inventory} invertories and total price is: {inventory*price}")
     #Calculation number of product per suplier 
@@ -30,11 +31,13 @@ for product_row in range(2, product_list.max_row + 1):
         total_value_per_suplier[suplier_names] = inventory * price
 
     #Product under inventory 10 
-    if inventory < 10:
-        product_under_10_inv[int(producu_muber)] = int(inventory)
+    if inventory < 50:
+        product_under_10_inv[int(producut_muber)] = int(inventory)
 
-
+    #Add total value of inventory in colum 5
+    total_inv_price.value = inventory * price
 
 print(product_per_suplier)
 print(total_value_per_suplier)
 print(product_under_10_inv)
+inv_file.save("inventory2.xlsx")
